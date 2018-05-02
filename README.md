@@ -78,7 +78,7 @@
 		document.write("Error!");
 	}
 ```
-## 编写程序，输入一个正整数，输出时反向输出
+### 编写程序，输入一个正整数，输出时反向输出
 ```
 	// 编写程序，输入一个正整数，输出时反向输出
 	var n = parseInt(window.prompt('input'));
@@ -298,3 +298,80 @@
 	var n = parseInt(window.prompt('input'));
 	fibonacciSequence(n);
 ```
+### 要求输入一串低于 10 位的数字，输出这串数字的中文大写
+```
+	// 要求输入一串低于 10 位的数字，输出这串数字的中文大写
+	var charTransfer = function(n) {
+		var transfer = function(target) {
+			switch(target) {
+				case "0" : return "零";
+				case "1" : return "壹";
+				case "2" : return "贰";
+				case "3" : return "叁";
+				case "4" : return "肆";
+				case "5" : return "伍";
+				case "6" : return "陆";
+				case "7" : return "柒";
+				case "8" : return "捌";
+				case "9" : return "玖";
+			}
+		}
+		var add = function(value) {
+			if(count > 5 && count < 10 || count == 1) {
+				if(n.charAt(i) == "0") {
+
+				}else {
+					result += transfer(n.charAt(i)) + value;
+				}
+			}else if(count == 5) {
+				if(n.charAt(i) == "0") {
+					result += value;
+				}else {
+					result += transfer(n.charAt(i)) + value;
+				}
+			}else if(count > 1 && count < 5) {
+				if(n.charAt(i) == "0") {
+					if(n.charAt(i + 1) == "0") {
+
+					}else {
+						result += transfer(n.charAt(i));
+					}
+				}else {
+					result += transfer(n.charAt(i)) + value;
+				}
+			}
+			count --;
+		}
+		if(n.length < 10) {
+			var result = "";
+			var count = n.length;
+			for(var i = 0; i < n.length; i ++) {
+				if(count == 9) {
+					add("亿");
+				}else if(count == 8) {
+					add("仟");
+				}else if(count == 7) {
+					add("佰");
+				}else if(count == 6) {
+					add("拾");
+				}else if(count == 5) {
+					add("万");
+				}else if(count == 4) {
+					add("仟");
+				}else if(count == 3) {
+					add("佰");
+				}else if(count == 2) {
+					add("拾");
+				}else if(count == 1) {
+					add("");
+				}
+			}
+			console.log(result + "圆整");
+		}else {
+			console.log("Eroor!")
+		}
+	}
+	var n = window.prompt('input');
+	charTransfer(n);
+```
+
